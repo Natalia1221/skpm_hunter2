@@ -1,11 +1,19 @@
+<?php
+// Create database connection using config file
+include_once("../../config.php");
+ 
+// Fetch all users data from database
+$result = mysqli_query($mysqli, "SELECT * FROM mapel");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="stylesheet" href="assets/dashboard.css">
+	 <link rel="stylesheet" href="../assets/dashboard.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-	<title>Dashboard Admin</title>
+	<title>Mapel</title>
 </head>
 <body>
 	<section class="sidebar close">
@@ -31,7 +39,7 @@
 			</li>
 
 			<li>
-				<a href="crud_guru/crud_guru.php"><i class="fas fa-user-check"></i><p>Daftar Guru</p></a>
+				<a href="../crud_guru/crud_guru.php"><i class="fas fa-user-check"></i><p>Daftar Guru</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Guru</a></li>
         		</ul>
@@ -52,7 +60,7 @@
 			</li>
 
 			<li>
-				<a href="crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
+				<a href="crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Mapel</a></li>
         		</ul>
@@ -85,7 +93,26 @@
 	<!-- Halaman Utama -->
 	<section class="home">
 		<div class="content">
-      		<h2>Selamat datang admin</h2>		  	
+      		<h2>Selamat datang admin</h2>
+
+			  	<a href="add.php">Tambah Mapel</a><br/><br/>
+ 
+ 				<table width='80%' border=1>
+
+ 					<tr>
+	 					<th>Id Mapel</th> 
+						<th>Mapel</th> 
+						<th>Update</th>
+ 					</tr>
+ 					<?php  
+ 					while($user_data = mysqli_fetch_array($result)) {         
+						 echo "<tr>";
+						 echo "<td>".$user_data['ID_MAPEL']."</td>";
+						 echo "<td>".$user_data['MAPEL']."</td>";   
+						 echo "<td><a href='edit.php?ID_MAPEL=$user_data[ID_MAPEL]'>Edit</a> | <a href='delete.php?ID_MAPEL=$user_data[ID_MAPEL]'>Delete</a></td></tr>";        
+ 					}
+ 					?>
+ 				</table>
     	</div>
 
 	</section>
