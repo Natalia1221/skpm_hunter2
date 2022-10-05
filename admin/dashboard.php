@@ -1,3 +1,11 @@
+<?php
+// Create database connection using config file
+include_once("../config.php");
+ 
+// Fetch all users data from database
+$result = mysqli_query($mysqli, "SELECT * FROM guru ORDER BY ID_GURU DESC");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +94,29 @@
 	<section class="home">
 		<div class="content">
       		<h2>Selamat datang admin</h2>
+
+			  	<a href="add.php">Tambah Guru</a><br/><br/>
+ 
+ 				<table width='80%' border=1>
+
+ 					<tr>
+	 					<th>Id Guru</th> <th>Username</th> <th>Password</th> <th>Nama</th> <th>Kelamin</th> <th>No. Hp</th> <th>Update</th>
+ 					</tr>
+ 					<?php  
+ 					while($user_data = mysqli_fetch_array($result)) {         
+						 echo "<tr>";
+						 echo "<td>".$user_data['ID_GURU']."</td>";
+						 echo "<td>".$user_data['USERNAME_GURU']."</td>";
+						 echo "<td>".$user_data['PASSWORD_GURU']."</td>";
+						 echo "<td>".$user_data['NAMA_GURU']."</td>";
+						 echo "<td>".$user_data['JK_GURU']."</td>";
+						 echo "<td>".$user_data['HP_GURU']."</td>";     
+						 echo "<td><a href='edit.php?id=$user_data[id]'>Edit</a> | <a href='delete.php?id=$user_data[id]'>Delete</a></td></tr>";        
+ 					}
+ 					?>
+ 				</table>
     	</div>
+
 	</section>
 
 	<script>
