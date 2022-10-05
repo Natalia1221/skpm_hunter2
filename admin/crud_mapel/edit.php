@@ -31,24 +31,28 @@ while($user_data = mysqli_fetch_array($result))
 <html>
 <head>	
     <title>Ubah Data Mapel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
  
 <body>
-    <a href="crud_mapel.php">Kembali</a>
-    <br/><br/>
-    
-    <form name="update_user" method="post" action="edit.php">
-        <table border="0">
-        <tr> 
-                <td>Mapel</td>
-                <td><input type="text" name="MAPEL"></td>
-            </tr>
+    <div class="container mx-auto my-3 mx-2">
+        <a class="btn btn-success btn-lg " href="crud_mapel.php">Kembali</a><br/><br/>
+
+        <form name="update_user" method="post" action="edit.php">
             
-            <tr>
-                <td><input type="hidden" name="ID_MAPEL" value=<?php echo $_GET['ID_MAPEL'];?>></td>
-                <td><input type="submit" name="update" value="Update"></td>
-            </tr>
-        </table>
-    </form>
+                <div class="row g-0">
+  			    	<div class="col-sm-6">Mapel</div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="MAPEL" value="<?php echo $MAPEL ?>"></div>
+			    </div>
+
+                <div class="row  g-0">
+					<div class="col-sm-6"><input class="form-control" type="hidden" name="ID_MAPEL" value="<?=$_GET['ID_MAPEL'];?>"></div>
+                    <div  class="col-sm-6"><input class="btn btn-primary mt-2 w-100"  type="submit" name="update" value="update"></div>
+				</div>
+			    
+           
+        </form>
+
+    </div>
 </body>
 </html>

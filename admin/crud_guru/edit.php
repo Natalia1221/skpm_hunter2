@@ -39,39 +39,64 @@ while($user_data = mysqli_fetch_array($result))
 <html>
 <head>	
     <title>Ubah Data Guru</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
  
 <body>
-    <a href="crud_guru.php">Kembali</a>
-    <br/><br/>
+    <div class="container mx-auto my-3 mx-2">
+        <a class="btn btn-success btn-lg " href="crud_guru.php">Kembali</a><br/><br/>
+
+        <form name="update_user" method="post" action="edit.php">
+            
+                <div class="row g-0">
+  			    	<div class="col-sm-6">Username</div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="USERNAME_GURU" value="<?php echo $USERNAME_GURU ?>"></div>
+			    </div>
+
+			    <div class="row g-0">
+  			    	<div class="col-sm-6">Password</div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="PASSWORD_GURU" value="<?php echo $PASSWORD_GURU ?>"></div>
+			    </div>
+
+			    <div class="row g-0">
+  			    	<div class="col-sm-6">Nama</div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="NAMA_GURU" value="<?php echo $NAMA_GURU ?>"></div>
+			    </div>
+
+                <div class="row g-0">
+  			    	<div class="col-sm-6">Jenis Kelamin</div>
+  			    	<div class="col-6 d-flex">
+			    	  	<div class="form-check me-2">
+  			    			<input class="form-check-input" type="radio" name="JK_GURU" id="flexRadioDefault1"value="P" <?= $JK_GURU == 'P' ? "checked" : ""?>>
+  			    			<label class="form-check-label" for="flexRadioDefault1">
+    		    				P
+  			    			</label>
+			    		</div>
+
+			    		<div class="form-check">
+  			    			<input class="form-check-input" type="radio" name="JK_GURU" id="flexRadioDefault2" value="L" <?= $JK_GURU == 'L' ? "checked" : ""?>>
+  			    			<label class="form-check-label" for="flexRadioDefault2">
+    		    				L
+  			    			</label>
+			    		</div>
+			    	</div>
+			    </div>
+
+			    <div class="row g-0">
+  			    	<div class="col-sm-6">No. HP</div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="HP_GURU" value="<?php echo $HP_GURU; ?>"></div>
+			    </div>
+
+                <div class="row  g-0">
+					<div class="col-sm-6"><input class="form-control" type="hidden" name="ID_GURU" value="<?=$_GET['ID_GURU'];?>"></div>
+                    <div  class="col-sm-6"><input class="btn btn-primary mt-2 w-100"  type="submit" name="update" value="update"></div>
+				</div>
+			    
+           
+        </form>
+
+    </div>
+
     
-    <form name="update_user" method="post" action="edit.php">
-        <table border="0">
-        <tr> 
-                <td>Username</td>
-                <td><input type="text" name="USERNAME_GURU"></td>
-            </tr>
-            <tr> 
-                <td>Password</td>
-                <td><input type="text" name="PASSWORD_GURU"></td>
-            </tr>
-            <tr> 
-                <td>Nama</td>
-                <td><input type="text" name="NAMA_GURU"></td>
-            </tr>
-            <tr> 
-                <td>Jenis Kelamin</td>
-                <td><input type="text" name="JK_GURU"></td>
-            </tr>
-            <tr> 
-                <td>No. Hp</td>
-                <td><input type="text" name="HP_GURU"></td>
-            </tr>
-            <tr>
-                <td><input type="hidden" name="ID_GURU" value=<?php echo $_GET['ID_GURU'];?>></td>
-                <td><input type="submit" name="update" value="Update"></td>
-            </tr>
-        </table>
-    </form>
 </body>
 </html>
