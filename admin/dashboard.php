@@ -24,7 +24,7 @@
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="#crud_mapel/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -38,7 +38,7 @@
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
+				<a href="crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Kelas</a></li>
         		</ul>

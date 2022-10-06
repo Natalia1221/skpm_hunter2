@@ -5,76 +5,76 @@ include_once("../../config.php");
 // Check if form is submitted for user update, then redirect to homepage after update
 if(isset($_POST['update']))
 {	
-    $ID_GURU = $_POST['ID_GURU'];
-    $USERNAME_GURU = $_POST['USERNAME_GURU'];
-    $PASSWORD_GURU = $_POST['PASSWORD_GURU'];
-    $NAMA_GURU = $_POST['NAMA_GURU'];
-    $JK_GURU = $_POST['JK_GURU'];
-    $HP_GURU = $_POST['HP_GURU'];
+    $NISN = $_POST['NISN'];
+    $USERNAME_SISWA = $_POST['USERNAME_SISWA'];
+    $PASSWORD_SISWA = $_POST['PASSWORD_SISWA'];
+    $NAMA_SISWA = $_POST['NAMA_SISWA'];
+    $JK_SISWA = $_POST['JK_SISWA'];
+    $HP_SISWA = $_POST['HP_SISWA'];
         
     // update user data
-    $result = mysqli_query($mysqli, "UPDATE GURU SET USERNAME_GURU='$USERNAME_GURU',PASSWORD_GURU='$PASSWORD_GURU',NAMA_GURU='$NAMA_GURU',JK_GURU='$JK_GURU',HP_GURU='$HP_GURU' WHERE ID_GURU='$ID_GURU'");
+    $result = mysqli_query($mysqli, "UPDATE SISWA SET USERNAME_SISWA='$USERNAME_SISWA',PASSWORD_SISWA='$PASSWORD_SISWA',NAMA_SISWA='$NAMA_SISWA',JK_SISWA='$JK_SISWA',HP_SISWA='$HP_SISWA' WHERE NISN='$NISN'");
     
     // Redirect to homepage to display updated user in list
-    header("Location: crud_guru.php");
+    header("Location: crud_siswa.php");
 }
 ?>
 <?php
 // Display selected user data based on id
 // Getting id from url
-$ID_GURU = $_GET['ID_GURU'];
+$NISN = $_GET['NISN'];
  
 // Fetech user data based on id
-$result = mysqli_query($mysqli, "SELECT * FROM GURU WHERE ID_GURU = '$ID_GURU'");
+$result = mysqli_query($mysqli, "SELECT * FROM SISWA WHERE NISN = '$NISN'");
  
 while($user_data = mysqli_fetch_array($result))
 {
-    $USERNAME_GURU = $user_data['USERNAME_GURU'];
-    $PASSWORD_GURU = $user_data['PASSWORD_GURU'];
-    $NAMA_GURU = $user_data['NAMA_GURU'];
-    $JK_GURU = $user_data['JK_GURU'];
-    $HP_GURU = $user_data['HP_GURU'];
+    $USERNAME_SISWA = $user_data['USERNAME_SISWA'];
+    $PASSWORD_SISWA = $user_data['PASSWORD_SISWA'];
+    $NAMA_SISWA = $user_data['NAMA_SISWA'];
+    $JK_SISWA = $user_data['JK_SISWA'];
+    $HP_SISWA = $user_data['HP_SISWA'];
 }
 ?>
 <html>
 <head>	
-    <title>Ubah Data Guru</title>
+    <title>Ubah Data Siswa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
  
 <body>
     <div class="container mx-auto my-3 mx-2">
-        <a class="btn btn-success btn-lg " href="crud_guru.php">Kembali</a><br/><br/>
+        <a class="btn btn-success btn-lg " href="crud_SISWA.php">Kembali</a><br/><br/>
 
         <form name="update_user" method="post" action="edit.php">
             
                 <div class="row g-0">
   			    	<div class="col-sm-6">Username</div>
-  			    	<div class="col-6"><input class="form-control my-1" type="text" name="USERNAME_GURU" value="<?php echo $USERNAME_GURU ?>"></div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="USERNAME_SISWA" value="<?php echo $USERNAME_SISWA ?>"></div>
 			    </div>
 
 			    <div class="row g-0">
   			    	<div class="col-sm-6">Password</div>
-  			    	<div class="col-6"><input class="form-control my-1" type="text" name="PASSWORD_GURU" value="<?php echo $PASSWORD_GURU ?>"></div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="PASSWORD_SISWA" value="<?php echo $PASSWORD_SISWA ?>"></div>
 			    </div>
 
 			    <div class="row g-0">
   			    	<div class="col-sm-6">Nama</div>
-  			    	<div class="col-6"><input class="form-control my-1" type="text" name="NAMA_GURU" value="<?php echo $NAMA_GURU ?>"></div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="NAMA_SISWA" value="<?php echo $NAMA_SISWA ?>"></div>
 			    </div>
 
                 <div class="row g-0">
   			    	<div class="col-sm-6">Jenis Kelamin</div>
   			    	<div class="col-6 d-flex">
 			    	  	<div class="form-check me-2">
-  			    			<input class="form-check-input" type="radio" name="JK_GURU" id="flexRadioDefault1"value="P" <?= $JK_GURU == 'P' ? "checked" : ""?>>
+  			    			<input class="form-check-input" type="radio" name="JK_SISWA" id="flexRadioDefault1"value="P" <?= $JK_SISWA == 'P' ? "checked" : ""?>>
   			    			<label class="form-check-label" for="flexRadioDefault1">
     		    				P
   			    			</label>
 			    		</div>
 
 			    		<div class="form-check">
-  			    			<input class="form-check-input" type="radio" name="JK_GURU" id="flexRadioDefault2" value="L" <?= $JK_GURU == 'L' ? "checked" : ""?>>
+  			    			<input class="form-check-input" type="radio" name="JK_SISWA" id="flexRadioDefault2" value="L" <?= $JK_SISWA == 'L' ? "checked" : ""?>>
   			    			<label class="form-check-label" for="flexRadioDefault2">
     		    				L
   			    			</label>
@@ -84,11 +84,11 @@ while($user_data = mysqli_fetch_array($result))
 
 			    <div class="row g-0">
   			    	<div class="col-sm-6">No. HP</div>
-  			    	<div class="col-6"><input class="form-control my-1" type="text" name="HP_GURU" value="<?php echo $HP_GURU; ?>"></div>
+  			    	<div class="col-6"><input class="form-control my-1" type="text" name="HP_SISWA" value="<?php echo $HP_SISWA; ?>"></div>
 			    </div>
 
                 <div class="row  g-0">
-					<div class="col-sm-6"><input class="form-control" type="hidden" name="ID_GURU" value="<?=$_GET['ID_GURU'];?>"></div>
+					<div class="col-sm-6"><input class="form-control" type="hidden" name="NISN" value="<?=$_GET['NISN'];?>"></div>
                     <div  class="col-sm-6"><input class="btn btn-primary mt-2 w-100"  type="submit" name="update" value="update"></div>
 				</div>
 			    

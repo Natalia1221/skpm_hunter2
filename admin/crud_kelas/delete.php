@@ -3,11 +3,11 @@
 include_once("../../config.php");
  
 // Get id from URL to delete that user
-$ID_MAPEL = $_GET['ID_MAPEL'];
+$ID_MAPEL = $_GET['ID_KELAS'];
  
 // Delete user row from table based on given id
-$result = mysqli_query($mysqli, "DELETE FROM MAPEL WHERE ID_MAPEL='$ID_MAPEL'");
+$result = mysqli_query($mysqli, "DELETE FROM KELAS WHERE ID_KELAS='$ID_MAPEL'");
  
 // After delete redirect to Home, so that latest user list will be displayed.
-header("Location:crud_mapel.php");
+header("Location:crud_kelas.php");
 ?>

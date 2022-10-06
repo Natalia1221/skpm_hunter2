@@ -3,7 +3,7 @@
 include_once("../../config.php");
  
 // Fetch all users data from database
-$result = mysqli_query($mysqli, "SELECT * FROM guru");
+$result = mysqli_query($mysqli, "SELECT * FROM GURU");
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM guru");
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="../crud_siswa/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -47,7 +47,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM guru");
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
+				<a href="../crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Kelas</a></li>
         		</ul>
