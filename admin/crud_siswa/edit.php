@@ -1,6 +1,6 @@
 <?php
 // include database connection file
-include_once("../../config.php");
+include_once("../../config/config.php");
  
 // Check if form is submitted for user update, then redirect to homepage after update
 if(isset($_POST['update']))

@@ -64,7 +64,7 @@
         $JK_SISWA = $_POST['JK_SISWA'];
         $HP_SISWA = $_POST['HP_SISWA'];
         // include database connection file
-        include_once("../../config.php");
+        include_once("../../config/config.php");
                 
         // Insert user data into table
         $result = mysqli_query($mysqli, "INSERT INTO SISWA(NISN, USERNAME_SISWA, PASSWORD_SISWA, NAMA_SISWA, JK_SISWA, HP_SISWA) VALUES('$NISN','$USERNAME_SISWA', '$PASSWORD_SISWA', '$NAMA_SISWA', '$JK_SISWA', '$HP_SISWA')");

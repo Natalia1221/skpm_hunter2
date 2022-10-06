@@ -64,7 +64,7 @@
         $JK_GURU = $_POST['JK_GURU'];
         $HP_GURU = $_POST['HP_GURU'];
         // include database connection file
-        include_once("../../config.php");
+        include_once("../../config/config.php");
                 
         // Insert user data into table
         $result = mysqli_query($mysqli, "INSERT INTO GURU(ID_GURU, USERNAME_GURU, PASSWORD_GURU, NAMA_GURU, JK_GURU, HP_GURU) VALUES('$ID_GURU','$USERNAME_GURU', '$PASSWORD_GURU', '$NAMA_GURU', '$JK_GURU', '$HP_GURU')");

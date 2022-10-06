@@ -1,6 +1,6 @@
 <?php
 // include database connection file
-include_once("../../config.php");
+include_once("../../config/config.php");
  
 // Get id from URL to delete that user
 $NISN = $_GET['NISN'];

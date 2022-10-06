@@ -38,7 +38,7 @@
         $ID_KELAS = $_POST['ID_KELAS'];
         $KELAS = $_POST['KELAS'];
         // include database connection file
-        include_once("../../config.php");
+        include_once("../../config/config.php");
                 
         // Insert user data into table
         $result = mysqli_query($mysqli, "INSERT INTO KELAS(ID_KELAS,KELAS) VALUES('$ID_KELAS','$KELAS')");

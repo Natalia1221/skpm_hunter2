@@ -38,7 +38,7 @@
         $ID_MAPEL = $_POST['ID_MAPEL'];
         $MAPEL = $_POST['MAPEL'];
         // include database connection file
-        include_once("../../config.php");
+        include_once("../../config/config.php");
                 
         // Insert user data into table
         $result = mysqli_query($mysqli, "INSERT INTO MAPEL(ID_MAPEL,MAPEL) VALUES('$ID_MAPEL','$MAPEL')");
