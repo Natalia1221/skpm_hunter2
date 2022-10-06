@@ -24,7 +24,7 @@
 			</li>
 
 			<li>
-				<a href="#crud_mapel/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="crud_siswa/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
