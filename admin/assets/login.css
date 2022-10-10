@@ -116,6 +116,7 @@ img {
     text-align: center;
     border-radius: 0.5rem;
     transition: 0.3s;
+    width:100%;
 }
 .login_button:hover {
     background-color: rgb(47, 199, 133);
