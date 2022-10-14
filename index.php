@@ -16,9 +16,9 @@
 		<article>
 			<h2>LOGIN Aplikasi Sekolah</h2>
 			<section>
-				<a href="login\login_admin.php"><button class="btn1 first1">Admin</button></a>
-                <a href="login\login_teacher.php"><button class="btn2 first2">Teacher</button></a>
-                <a href="login\login_student.php"><button class="btn3 first3">Student</button></a>
+				<a href="admin\login_admin.php"><button class="btn1 first1">Admin</button></a>
+                <a href="teacher\login_teacher.php"><button class="btn2 first2">Teacher</button></a>
+                <a href="student\login_student.php"><button class="btn3 first3">Student</button></a>
 			</section>
 		</article>
 

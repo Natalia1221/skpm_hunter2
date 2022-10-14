@@ -3,15 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/dashboard_student.css">
+	 <link rel="stylesheet" href="assets/dashboard_teacher.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-	<title>Dashboard Admin</title>
+	<title>Dashboard Guru</title>
 </head>
 <body>
 	<section class="sidebar close">
 		<!-- Judul Sidebar -->
 		<section class="click-close">
-			<i class="fas fa-bars"></i><p>Admin</p>
+			<i class="fas fa-bars"></i><p>Guru</p>
 		</section>
 
 		<!-- Menu Sidebar -->
@@ -24,56 +24,35 @@
 			</li>
 
 			<li>
-				<a href="crud_siswa/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_guru/crud_guru.php"><i class="fas fa-user-check"></i><p>Daftar Guru</p></a>
+				<a href="#"><i class="fas fa-book"></i><p>Daftar Absen</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Daftar Guru</a></li>
+          		<li><a class="link_name" href="#">Daftar Absen</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
+				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Daftar Kelas</a></li>
+          		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
+				<a href="#"><i class="fas fa-book-open"></i><p >Edit Absensi</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Daftar Nilai</a></li>
+          		<li><a class="link_name" href="#">Edit Absensi</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
-				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Daftar Mapel</a></li>
-        		</ul>
-			</li>
-
-			<li>
-				<a href="#"><i class="fas fa-award"></i><p>Jadwal Raport</p></a>
-				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Jadwal Raport</a></li>
-        		</ul>
-			</li>
-
-			<li>
-				<a href="#"><i class="fas fa-hand-holding-usd"></i><p >Pembayaran SPP</p></a>
-				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Pembayaran SPP</a></li>
-        		</ul>
-			</li>
-
-			<li>
-				<a href="login_student.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+				<a href="login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
         		</ul>
@@ -85,9 +64,8 @@
 	<!-- Halaman Utama -->
 	<section class="home">
 		<div class="content">
-      		<h2>Selamat datang admin</h2>		  	
+      		<h2>Selamat datang guru</h2>
     	</div>
-
 	</section>
 
 	<script>

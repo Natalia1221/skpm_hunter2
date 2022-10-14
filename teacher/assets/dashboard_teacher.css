@@ -14,7 +14,7 @@
   left: 0;
   height: 100%;
   width: 260px;
-  background: #25a86f;
+  background: #385A64;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -40,7 +40,7 @@
   line-height: 50px;
 }
 .sidebar .click-close i:hover{
-  background-color: darkgreen;
+  background-color: black;
 }
 .sidebar .click-close p{
   font-size: 22px;
@@ -73,7 +73,7 @@
   transition: all 0.4s ease;
 }
 .sidebar .list-menu li:hover{
-  background: darkgreen;
+  background: black;
 }
 
 .sidebar .list-menu li .iocn-link{
@@ -118,7 +118,7 @@
 .sidebar .list-menu li .sub-menu{
   padding: 6px 6px 14px 80px;
   margin-top: -10px;
-  background: darkgreen;
+  background: black;
   display: none;
 }
 

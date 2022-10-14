@@ -10,7 +10,7 @@ body {
     font-family: "Open Sans", sans-serif;
     font-size: 0.938rem;
     color: black;
-    background-color: #25a86f;
+    background-color: #385A64;
 }
 
 h1 {
@@ -81,7 +81,7 @@ img {
 }
 .login_icon {
     font-size: 1.5rem;
-    color: #25a86f;
+    color: #385A64;
 }
 .login_input {
     border: none;
@@ -110,7 +110,7 @@ img {
     display: block;
     padding: 1rem;
     margin: 2rem 0;
-    background-color: #25a86f;
+    background-color: #385A64;
     color: #fff;
     font-weight: 600;
     text-align: center;
@@ -118,7 +118,7 @@ img {
     transition: 0.3s;
 }
 .login_button:hover {
-    background-color: rgb(47, 199, 133);
+    background-color: rgb(87, 117, 126);
 }
 
 .block {
