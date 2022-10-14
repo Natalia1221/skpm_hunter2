@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="stylesheet" href="assets/dashboard.css">
+	 <link rel="stylesheet" href="assets/dashboard_admin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<title>Dashboard Admin</title>
 </head>
@@ -73,7 +73,7 @@
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+				<a href="login_admin"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
         		</ul>
