@@ -11,15 +11,15 @@ include '../config/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/login_student.css">
+    <link rel="stylesheet" href="assets/login_admin.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <title>LOGIN STUDENT</title>
+    <title>LOGIN ADMIN</title>
 </head>
 <body>
     <main class="login">
         <article class="login_container" style="height: 550px;">
             <section class="login_img">
-                <img src="assets/img/student.jpg" alt="user login"/>
+                <img src="assets/admin.jpg" alt="user login"/>
             </section> 
 
             <section class="login_forms">
@@ -43,15 +43,15 @@ include '../config/config.php';
                     <!-- proses login -->
                     <?php
                     if(isset($_POST['proseslog'])){
-                        $sql = mysqli_query($mysqli, "select * from siswa where USERNAME_SISWA = '$_POST[USERNAME]' and PASSWORD_SISIWA = '$_POST[PASSWORD]'");
+                        $sql = mysqli_query($mysqli, "select * from admin where USERNAME = '$_POST[USERNAME]' and PASSWORD = '$_POST[PASSWORD]'");
 
                         $cek = mysqli_num_rows($sql);
                         if ($cek > 0) {
-                            $_SESSION['PASSWORD_SISIWA'] = $_POST['PASSWORD'];
-                            echo "<meta http-equiv=refresh content=0;URL='../student/dashboard.php'>";
+                            $_SESSION['PASSWORD'] = $_POST['PASSWORD'];
+                            echo "<meta http-equiv=refresh content=0;URL='dashboard_admin.php'>";
                         }else{
                             echo "<p>Username atau Password Salah!</p>";
-                            echo "<meta http-equiv=refresh content=2;URL='login_student.php'>";
+                            echo "<meta http-equiv=refresh content=2;URL='login_admin.php'>";
                         }
                     }
                     ?>
