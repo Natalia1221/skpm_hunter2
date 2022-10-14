@@ -3,7 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/dashboard_admin.css">
+<<<<<<< HEAD:admin/dashboard_admin.php
+	 <link rel="stylesheet" href="assets/dashboard_admin.css">
+=======
+	 <link rel="stylesheet" href="assets/dashboard_student.css">
+>>>>>>> student:admin/dashboard_student.php
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<title>Dashboard Admin</title>
 </head>
@@ -73,8 +77,15 @@
 			</li>
 
 			<li>
+<<<<<<< HEAD:admin/dashboard_admin.php
+<<<<<<< HEAD:admin/dashboard.php
 				<a href="../login/login_admin.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+=======
 				<a href="login_admin"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+>>>>>>> admin:admin/dashboard_admin.php
+=======
+				<a href="login_student.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+>>>>>>> student:admin/dashboard_student.php
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
         		</ul>
