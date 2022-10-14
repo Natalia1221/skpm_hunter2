@@ -52,7 +52,7 @@
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+				<a href="../login/login_student.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
         		</ul>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="index.css">
+	<title>LOGIN</title>
+</head>
+<body>
+	<main>
+		<header>			
+			<h1>Aplikasi Sekolah</h1>
+            <h3>UPN “Veteran” Jawa Timur</h3>			
+		</header>
+
+		<article>
+			<h2>LOGIN Aplikasi Sekolah</h2>
+			<section>
+				<a href="login\login_admin.php"><button class="btn1 first1">Admin</button></a>
+                <a href="login\login_teacher.php"><button class="btn2 first2">Teacher</button></a>
+                <a href="login\login_student.php"><button class="btn3 first3">Student</button></a>
+			</section>
+		</article>
+
+	</main>
+</body>
+</html>
