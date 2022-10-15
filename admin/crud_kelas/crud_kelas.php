@@ -68,9 +68,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM KELAS");
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-award"></i><p>Jadwal Raport</p></a>
+				<a href="../crud_semester/crud_semester.php"><i class="fas fa-award"></i><p>Daftar Semester</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Jadwal Raport</a></li>
+          		<li><a class="link_name" href="#">Daftar Semester</a></li>
         		</ul>
 			</li>
 

@@ -33,21 +33,21 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 			</li>
 
 			<li>
-				<a href="crud_siswa/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="../crud_siswa/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_guru/crud_guru.php"><i class="fas fa-user-check"></i><p>Daftar Guru</p></a>
+				<a href="../crud_guru/crud_guru.php"><i class="fas fa-user-check"></i><p>Daftar Guru</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Guru</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
+				<a href="../crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Kelas</a></li>
         		</ul>
@@ -61,16 +61,16 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 			</li>
 
 			<li>
-				<a href="crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
+				<a href="../crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Mapel</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-award"></i><p>Jadwal Raport</p></a>
+				<a href="crud_semester.php"><i class="fas fa-award"></i><p>Daftar Semester</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Jadwal Raport</a></li>
+          		<li><a class="link_name" href="#">Daftar Semester</a></li>
         		</ul>
 			</li>
 
