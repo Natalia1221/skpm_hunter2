@@ -1,10 +1,19 @@
+<?php
+// Create database connection using config file
+include_once("../../config/config.php");
+ 
+// Fetch all users data from database
+$result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="stylesheet" href="assets/dashboard_admin.css">
+	<link rel="stylesheet" href="../assets/dashboard_admin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<title>Dashboard Admin</title>
 </head>
 <body>
@@ -84,8 +93,47 @@
 
 	<!-- Halaman Utama -->
 	<section class="home">
+		
 		<div class="content">
-      		<h2>Selamat datang admin</h2>		  	
+			<h2>Selamat datang admin</h2>
+
+			<div class="container mx-auto my-3 mx-2" >
+        		<a class="btn btn-secondary btn-lg " href="add.php">Tambah Semester</a><br/><br/>
+
+        		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
+        		    <table class="table table-striped table-hover table-bordered">
+
+					<tr>
+	 					<th>Id Semester</th> 
+						<th>Masukkan Nilai</th> 
+						<th>Membagi Raport</th>
+						<th>Update</th>
+ 					</tr>
+					 <?php  
+ 						while($user_data = mysqli_fetch_array($result)) {         
+							 echo "<tr>";
+							 echo "<td>".$user_data['ID_SEMESTER']."</td>";
+
+							 if($user_data['MASUKKAN_NILAI']==1){
+								echo "<td>Ya</td>";
+							 }else{
+								echo "<td>Tidak</td>";
+							 }
+							 
+							 if($user_data['MEMBAGI_RAPORT']==1){
+								echo "<td>Ya</td>";
+							 }else{
+								echo "<td>Tidak</td>";
+							 }
+							    
+							 echo "<td><a class='btn btn-success' href='edit.php?ID_SEMESTER=$user_data[ID_SEMESTER]'>Edit</a> | <a class='btn btn-danger' href='delete.php?ID_SEMESTER=$user_data[ID_SEMESTER]'>Delete</a></td></tr>";        
+ 						}
+ 					?>
+        		    </table>
+        		</div>
+					
+    		</div>
+	
     	</div>
 
 	</section>
