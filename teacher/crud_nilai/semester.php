@@ -1,10 +1,21 @@
+<?php
+// Create database connection using config file
+include_once("../../config/config.php");
+
+
+// Fetch all users data from database
+$result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="stylesheet" href="assets/dashboard_teacher.css">
+	 <link rel="stylesheet" href="../assets/dashboard_teacher.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<title>Dashboard Guru</title>
 </head>
 <body>
@@ -36,9 +47,9 @@
           		<li><a class="link_name" href="#">Daftar Absen</a></li>
         		</ul>
 			</li>
-			
+
 			<li>
-				<a href="crud_nilai/semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
@@ -63,9 +74,42 @@
 
 	<!-- Halaman Utama -->
 	<section class="home">
+		
 		<div class="content">
-      		<h2>Selamat datang guru</h2>
+			<h2>Selamat datang guru</h2>
+
+			<div class="container mx-auto my-3 mx-2" >
+        		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
+        		    <table class="table table-striped table-hover table-bordered">
+
+					<tr>
+	 					<th>Id Semester</th> 
+						<th>Masukkan Nilai</th>
+ 					</tr>
+
+					 <?php
+                     
+                        echo "";
+                        
+ 						while($user_data = mysqli_fetch_array($result)) {         
+							 echo "<tr>";
+							 echo "<td>".$user_data['ID_SEMESTER']."</td>";
+
+							 if($user_data['MASUKKAN_NILAI']==1){
+								echo "<td><a class='btn btn-success' href='mapel.php?ID_SEMESTER=$user_data[ID_SEMESTER]'>Masukkan Nilai</a></td></tr>";
+							 }else{
+								echo "<td><a class='btn btn-secondary' href='#'>Masukkan Nilai</a></td></tr>";
+							 }
+							      
+ 						}
+ 					?>
+        		    </table>
+        		</div>
+					
+    		</div>
+	
     	</div>
+
 	</section>
 
 	<script>
