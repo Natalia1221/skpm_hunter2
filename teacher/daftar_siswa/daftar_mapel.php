@@ -31,14 +31,14 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_teacher.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="daftar_semester.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -52,7 +52,7 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="../crud_nilai/semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
@@ -79,7 +79,11 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 	<section class="home">
 		
 		<div class="content">
-			<h2>Selamat datang guru</h2>
+			<div class="d-flex align-items-center justify-content-center">
+				<a class="btn btn-primary " href="daftar_semester.php" role="button"><</a>
+				<h2 class="my-auto">Daftar Mapel</h2>
+			</div>
+			
 
 					 <?php
                         echo "</br></br>";

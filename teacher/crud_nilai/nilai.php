@@ -4,10 +4,11 @@ include_once("../../config/config.php");
 session_start();
 $ID_KELAS = $_GET["ID_KELAS"];
 $ID_MAPEL = $_GET["ID_MAPEL"];
-
+$CRUD = $_GET["CRUD"];
 $ID_SEMESTER = $_SESSION['ID_SEMESTER'];
 // Fetch all users data from database
-
+$kelas = mysqli_query($mysqli, "SELECT * FROM `kelas` WHERE ID_KELAS = '$ID_KELAS'");
+$KELAS = mysqli_fetch_array($kelas);
 $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISWA, nilai.NILAI, nilai.JENIS FROM `nilai` INNER JOIN siswa ON nilai.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && nilai.ID_MAPEL ='$ID_MAPEL'&& nilai.ID_SEMESTER = '$ID_SEMESTER'");
 ?>
 
@@ -31,14 +32,14 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_teacher.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="../daftar_siswa/daftar_semester.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -52,7 +53,7 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
@@ -79,12 +80,9 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 	<section class="home">
 		
 		<div class="content">
-			<h2>Selamat datang guru</h2>
-			<!-- <?php 
-				echo $ID_KELAS;
-				echo $ID_MAPEL;
-				echo $JENIS;
-			?> -->
+			<div class="d-flex align-items-center justify-content-center">
+				<h2 class="my-auto">Daftar Nilai kelas <?php echo $KELAS['KELAS']?></h2>
+			</div>
 
 			<div class="container mx-auto my-3 mx-2" >
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
@@ -144,7 +142,7 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 					<div class="row  col-6 mx-auto">
 						
 	  					<div  class="col-12">
-							<a class='btn btn-primary mt-2 w-100' href='edit.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&JENIS=$JENIS" ?>'>Edit Nilai</a>
+							<a class='btn btn-primary mt-2 w-100' href='mapel.php?<?php echo "ID_SEMESTER=$ID_SEMESTER&CRUD=$CRUD" ?>'>Kembali</a>
 						</div>
 					</div>
 

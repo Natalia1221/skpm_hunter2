@@ -32,14 +32,14 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_teacher.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="../daftar_siswa/daftar_semester.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -53,7 +53,7 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
@@ -80,7 +80,10 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 	<section class="home">
 		
 		<div class="content">
-			<h2>Selamat datang guru</h2>
+			<div class="d-flex align-items-center justify-content-center">
+				<a class="btn btn-primary " href="semester.php" role="button"><</a>
+				<h2 class="my-auto">Daftar Mapel</h2>
+			</div>
 
 					 <?php
                         echo "</br></br>";
@@ -104,10 +107,10 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 											echo "<tr>";
 							 				echo "<td class='col-5'>".$id_kelas['KELAS']."</td>";
 											if($CRUD == 1){
-												echo "<td><a class='btn btn-success' href='crud_nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&JENIS=PENGETAHUAN'>Pengetahuan</a> | <a class='btn btn-success' href='crud_nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&JENIS=KETERAMPILAN'>Keterampilan</a></td></tr>";
+												echo "<td><a class='btn btn-success' href='crud_nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&JENIS=PENGETAHUAN&CRUD=1'>Pengetahuan</a> | <a class='btn btn-success' href='crud_nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&JENIS=KETERAMPILAN&CRUD=1'>Keterampilan</a></td></tr>";
 											}
 											else{
-												echo "<td><a class='btn btn-success' href='nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL'>Lihat</a></td></tr>";
+												echo "<td><a class='btn btn-success' href='nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&CRUD=0'>Lihat</a></td></tr>";
 											}
 											
 							 	

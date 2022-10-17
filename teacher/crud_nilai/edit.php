@@ -7,6 +7,7 @@ if(isset($_POST['update']))
     $ID_MAPEL = $_GET["ID_MAPEL"];
     $JENIS = $_GET["JENIS"];
     $ID_SEMESTER = $_SESSION['ID_SEMESTER'];
+	$CRUD = $_GET["CRUD"];
     $data= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISWA, nilai.NILAI FROM `nilai` INNER JOIN siswa ON nilai.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && nilai.JENIS ='$JENIS' && nilai.ID_MAPEL ='$ID_MAPEL' && nilai.ID_SEMESTER = '$ID_SEMESTER'");
 
     $i =0;
@@ -27,7 +28,7 @@ if(isset($_POST['update']))
     //$result = mysqli_query($mysqli, "UPDATE NILAI SET `NILAI`=(CASE $value end)");
     //echo $value;
     // Redirect to homepage to display updated user in list
-    header("Location: crud_nilai.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&JENIS=$JENIS");
+    header("Location: crud_nilai.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&JENIS=$JENIS&CRUD=1");
 }
 ?>
 
@@ -66,14 +67,14 @@ $data= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISW
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_teacher.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="../daftar_siswa/daftar_semester.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -87,7 +88,7 @@ $data= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISW
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>

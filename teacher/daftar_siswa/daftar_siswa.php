@@ -7,6 +7,8 @@ $ID_KELAS = $_GET["ID_KELAS"];
 
 // Fetch all users data from database
 $siswa = mysqli_query($mysqli, "SELECT * FROM `siswa` WHERE siswa.ID_KELAS = '$ID_KELAS'");
+$kelas = mysqli_query($mysqli, "SELECT * FROM `kelas` WHERE ID_KELAS = '$ID_KELAS'");
+$KELAS = mysqli_fetch_array($kelas);
 ?>
 
 <!DOCTYPE html>
@@ -29,14 +31,14 @@ $siswa = mysqli_query($mysqli, "SELECT * FROM `siswa` WHERE siswa.ID_KELAS = '$I
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_teacher.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="daftar_semester.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -50,7 +52,7 @@ $siswa = mysqli_query($mysqli, "SELECT * FROM `siswa` WHERE siswa.ID_KELAS = '$I
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="../crud_nilai/semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
@@ -77,12 +79,9 @@ $siswa = mysqli_query($mysqli, "SELECT * FROM `siswa` WHERE siswa.ID_KELAS = '$I
 	<section class="home">
 		
 		<div class="content">
-			<h2>Selamat datang guru</h2>
-			<!-- <?php 
-				echo $ID_KELAS;
-				echo $ID_MAPEL;
-				echo $JENIS;
-			?> -->
+			<div class="d-flex align-items-center justify-content-center">
+				<h2 class="my-auto">Daftar Siswa kelas <?php echo $KELAS['KELAS']?></h2>
+			</div>
 
 			<div class="container mx-auto my-3 mx-2" >
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">

@@ -28,14 +28,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_teacher.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="daftar_semester.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
@@ -49,7 +49,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="../crud_nilai/semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
@@ -76,7 +76,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 	<section class="home">
 		
 		<div class="content">
-			<h2>Selamat datang guru</h2>
+			<h2>Daftar Semester</h2>
 
 			<div class="container mx-auto my-3 mx-2" >
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
