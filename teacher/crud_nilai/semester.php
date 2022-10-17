@@ -85,6 +85,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 					<tr>
 	 					<th>Id Semester</th> 
 						<th>Masukkan Nilai</th>
+						<th>Lihat Nilai</th>
  					</tr>
 
 					 <?php
@@ -96,10 +97,12 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 							 echo "<td>".$user_data['ID_SEMESTER']."</td>";
 
 							 if($user_data['MASUKKAN_NILAI']==1){
-								echo "<td><a class='btn btn-success' href='mapel.php?ID_SEMESTER=$user_data[ID_SEMESTER]'>Masukkan Nilai</a></td></tr>";
+								echo "<td><a class='btn btn-success' href='mapel.php?ID_SEMESTER=$user_data[ID_SEMESTER]&CRUD=1'>Masukkan Nilai</a></td>";
 							 }else{
 								echo "<td><a class='btn btn-secondary' href='#'>Masukkan Nilai</a></td></tr>";
 							 }
+
+							 echo "<td><a class='btn btn-success' href='mapel.php?ID_SEMESTER=$user_data[ID_SEMESTER]&CRUD=0'>Lihat Nilai</a></td></tr>";
 							      
  						}
  					?>
