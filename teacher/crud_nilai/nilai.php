@@ -8,7 +8,7 @@ $ID_MAPEL = $_GET["ID_MAPEL"];
 $ID_SEMESTER = $_SESSION['ID_SEMESTER'];
 // Fetch all users data from database
 
-$data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISWA, nilai.NILAI FROM `nilai` INNER JOIN siswa ON nilai.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && nilai.ID_MAPEL ='$ID_MAPEL'&& nilai.ID_SEMESTER = '$ID_SEMESTER'");
+$data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISWA, nilai.NILAI, nilai.JENIS FROM `nilai` INNER JOIN siswa ON nilai.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && nilai.ID_MAPEL ='$ID_MAPEL'&& nilai.ID_SEMESTER = '$ID_SEMESTER'");
 ?>
 
 <!DOCTYPE html>
@@ -98,44 +98,45 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
                         <th class="col-2">Keterampilan</th>
  					</tr>
 					 <?php
-					 	$ada=mysqli_num_rows($data_found);
-						if($ada>0){
-							while($user_data = mysqli_fetch_array($data_found)) {         
-								echo "<tr>";
-								echo "<td class='col-4'>".$user_data['NISN']."</td>";
-								echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
-								echo "<td class='col-4'>".$user_data['NILAI']."</td></tr>";  
+					 $i=1;
+					 	while($user_data = mysqli_fetch_array($data_found)) { 
+							if($i%2==1){
+								if($user_data['JENIS']=="PENGETAHUAN"){
+									echo "<tr>";
+									echo "<td class='col-4'>".$user_data['NISN']."</td>";
+									echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
+									echo "<td class='col-4'>".$user_data['NILAI']."</td>";
+									
+								}else{
+									echo "<tr>";
+									echo "<td class='col-4'>".$user_data['NISN']."</td>";
+									echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
+									echo "<td class='col-4'>-</td>";
+									echo "<td class='col-4'>".$user_data['NILAI']."</td></tr>";
+									
+									$i=0;
+								}
+							}else{
+								if($user_data['JENIS']=="KETERAMPILAN"){
+									echo "<td class='col-4'>".$user_data['NILAI']."</td></tr>";
+								}else{
+									echo "<td class='col-4'>-</td></tr>";
+									echo "<tr>";
+
+									echo "<td class='col-4'>".$user_data['NISN']."</td>";
+									echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
+									echo "<td class='col-4'>".$user_data['NILAI']."</td>";
+									echo "<td class='col-4'>-</td></tr>";
+								}
 							}
-
-						}else{
 							
-                        	
- 							while($user_data = mysqli_fetch_array($siswa)) {         
-								 echo "<tr>";
-								 echo "<td class='col-4'>".$user_data['NISN']."</td>";
-                        	     echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
-								 echo "<td class='col-2'>0</td></tr>";
-
-							 
-
- 							}
-
-							 $siswa = mysqli_query($mysqli, "SELECT NISN, NAMA_SISWA FROM `siswa` WHERE siswa.ID_KELAS = '$ID_KELAS'");
-
-							 $i =0;
-							 $value = '';
-							 while($user_data = mysqli_fetch_array($siswa)) {
-								 $NISN = $user_data['NISN'];
-								 $NILAI = 0;
-								 $value = $value."('$ID_SEMESTER','$ID_MAPEL', '$NISN', $NILAI, '$JENIS'),";
-								 $i +=1;
-							 }
-					 
-				 
-							 $value = rtrim($value, ",");
-							  // Insert user data into table
-							 $result = mysqli_query($mysqli, "INSERT INTO `nilai` (ID_SEMESTER, ID_MAPEL, NISN, NILAI, JENIS) VALUES $value;");
+							$i +=1;
+							
+							
+							
 						}
+
+					 	
 					 	
  					?>
         		    </table>
