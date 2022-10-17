@@ -66,7 +66,7 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 			</li>
 
 			<li>
-				<a href="login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+				<a href="../login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
         		</ul>
@@ -90,10 +90,10 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 							 echo"<h4  >$MAPEL</h4>
 
 							 		<div class='container mx-auto my-3 mx-2' >
-							 			<div class='table-responsive col-md-12 my-3 mx-2' style='overflow-x: auto'>
+							 			<div class='table-responsive col-md-10  my-3 mx-auto' style='overflow-x: auto'>
 								 			<table class='table table-striped table-hover table-bordered'>
 							 	 				<tr>
-							 						<th>ID Kelas</th> 
+							 						<th class='col-5'>ID Kelas</th> 
 													<th>Masukkan Nilai</th>
 						 						</tr>
 							 	";
@@ -101,8 +101,9 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 							 	$result = mysqli_query($mysqli, "SELECT * FROM `kelas` WHERE ID_KELAS IN (SELECT ID_KELAS FROM `belajar` WHERE ID_MAPEL = '$ID_MAPEL')");
 							 	while($id_kelas = mysqli_fetch_array($result)){
 											echo "<tr>";
-							 				echo "<td>".$id_kelas['KELAS']."</td>";
-											echo "<td><a class='btn btn-success' href='crud_nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL'>Masukkan Nilai</a></td></tr>";
+							 				echo "<td class='col-5'>".$id_kelas['KELAS']."</td>";
+											echo "<td><a class='btn btn-success' href='crud_nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&JENIS=PENGETAHUAN'>Pengetahuan</a> | <a class='btn btn-success' href='crud_nilai.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&JENIS=KETERAMPILAN'>Keterampilan</a></td></tr>";
+											
 							 	
 							 	}
 							 	      

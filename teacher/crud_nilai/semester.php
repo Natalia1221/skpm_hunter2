@@ -63,7 +63,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 			</li>
 
 			<li>
-				<a href="login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+				<a href="../login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
         		</ul>
