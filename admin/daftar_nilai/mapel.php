@@ -1,10 +1,22 @@
+<?php
+// Create database connection using config file
+include_once("../../config/config.php");
+
+session_start();
+$_SESSION['ID_SEMESTER'] = $_GET["ID_SEMESTER"];
+
+// Fetch all users data from database
+$kelas = mysqli_query($mysqli, "SELECT * FROM `kelas`");
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="stylesheet" href="assets/dashboard_admin.css">
+	 <link rel="stylesheet" href="../assets/dashboard_admin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<title>Dashboard Admin</title>
 </head>
 <body>
@@ -45,7 +57,7 @@
 			</li>
 
 			<li>
-				<a href="daftar_nilai/semester.php"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
+				<a href="#"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
@@ -85,7 +97,50 @@
 	<!-- Halaman Utama -->
 	<section class="home">
 		<div class="content">
-      		<h2>Selamat datang admin</h2>		  	
+		<div class="d-flex align-items-center justify-content-center">
+				<a class="btn btn-primary " href="semester.php" role="button"><</a>
+				<h2 class="my-auto">Daftar Mapel Tiap Kelas</h2>
+			</div>
+
+					 <?php
+                        echo "</br></br>";
+                        
+ 						while($user_data = mysqli_fetch_array($kelas)) {   
+
+							 $ID_KELAS = $user_data["ID_KELAS"];
+							 $KELAS = $user_data["KELAS"];;
+							 echo"<h4  >$KELAS</h4>
+
+							 		<div class='container mx-auto my-3 mx-2' >
+							 			<div class='table-responsive col-md-10  my-3 mx-auto' style='overflow-x: auto'>
+								 			<table class='table table-striped table-hover table-bordered'>
+							 	 				<tr>
+							 						<th class='col-5'>ID Kelas</th> 
+													<th>Keterangan</th>
+						 						</tr>
+							 	";
+							 	$result = mysqli_query($mysqli, "SELECT * FROM `belajar` where ID_KELAS = '$ID_KELAS' ");
+								
+							 	while($id_mapel = mysqli_fetch_array($result)){
+											$ID_MAPEL = $id_mapel['ID_MAPEL'];
+
+											$guru_id = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_MAPEL = '$ID_MAPEL' "));
+											$ID_GURU = $guru_id['ID_GURU'];
+											echo "<tr>";
+							 				echo "<td class='col-5'>".$ID_MAPEL."</td>";
+											echo "<td><a class='btn btn-success' href='nilai.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&ID_GURU=$ID_GURU'>Lihat</a></td></tr>";
+										
+							 	}
+							 	      
+							 	echo"
+							 				</table>
+							 			</div>
+								 
+						 			</div>
+							 		</br></br></br>";
+							      
+ 						}
+ 					?>		  	
     	</div>
 
 	</section>
