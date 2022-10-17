@@ -45,7 +45,7 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book"></i><p>Daftar Absen</p></a>
+				<a href="../crud_absen/semester.php"><i class="fas fa-book"></i><p>Daftar Absen</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Absen</a></li>
         		</ul>

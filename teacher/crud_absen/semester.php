@@ -49,7 +49,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 			</li>
 
 			<li>
-				<a href="semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="../crud_nilai/semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>

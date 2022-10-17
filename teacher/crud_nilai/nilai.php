@@ -105,7 +105,7 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 									echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
 									echo "<td class='col-4'>".$user_data['NILAI']."</td>";
 									
-								}else{
+								}elseif($user_data['JENIS']=="KETERAMPILAN"){
 									echo "<tr>";
 									echo "<td class='col-4'>".$user_data['NISN']."</td>";
 									echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
@@ -117,7 +117,7 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 							}else{
 								if($user_data['JENIS']=="KETERAMPILAN"){
 									echo "<td class='col-4'>".$user_data['NILAI']."</td></tr>";
-								}else{
+								}else if($user_data['JENIS']=="PENGETAHUAN"){
 									echo "<td class='col-4'>-</td></tr>";
 									echo "<tr>";
 

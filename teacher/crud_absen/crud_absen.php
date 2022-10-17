@@ -48,14 +48,14 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book"></i><p>Daftar Absen</p></a>
+				<a href="semester.php"><i class="fas fa-book"></i><p>Daftar Absen</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Absen</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
+				<a href="../crud_nilai/semester.php"><i class="fas fa-mail-bulk"></i><p>Input Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Input Nilai</a></li>
         		</ul>
