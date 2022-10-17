@@ -45,9 +45,11 @@ include '../config/config.php';
                     if(isset($_POST['proseslog'])){
                         $sql = mysqli_query($mysqli, "select * from guru where USERNAME_GURU= '$_POST[USERNAME]' and PASSWORD_GURU = '$_POST[PASSWORD]'");
 
-                        $cek = mysqli_num_rows($sql);
+                        $cek = mysqli_fetch_array($sql);
                         if ($cek > 0) {
                             $_SESSION['PASSWORD_GURU'] = $_POST['PASSWORD'];
+                            $_SESSION['ID_GURU']= $cek['ID_GURU'];
+                            
                             echo "<meta http-equiv=refresh content=0;URL='dashboard_teacher.php'>";
                         }else{
                             echo "<p>Username atau Password Salah!</p>";
