@@ -64,13 +64,6 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book-open"></i><p >Edit Absensi</p></a>
-				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Edit Absensi</a></li>
-        		</ul>
-			</li>
-
-			<li>
 				<a href="../login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
@@ -85,16 +78,19 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 		
 		<div class="content">
 			<div class="d-flex align-items-center justify-content-center">
-				<a class="btn btn-primary " href="mapel.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>&CRUD=<?php echo$CRUD;?>" role="button"><</a>
+				<a class="btn btn-primary " href="tanggal.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>&ID_KELAS=<?php echo$ID_KELAS;?>&ID_MAPEL=<?php echo$ID_MAPEL;?>&CRUD=<?php echo$CRUD;?>" role="button"><</a>
 				<h2 class="my-auto">Daftar Absen kelas <?php echo $KELAS['KELAS']?></h2>
 			</div>
 
-			<div>
-				<h5 class="my-auto">Mapel   : <?php echo $MAPEL['MAPEL']?></h5>
-				<h5 class="my-auto">Tanggal : <?php echo $TANGGAL_ABSEN?></h5>
-			</div>
+
 
 			<div class="container mx-auto my-3 mx-2" >
+				
+			<div class="text-start ms-2">
+					<h6><b>Mapel     : </b> <?php echo $MAPEL['MAPEL']?></h6>
+					<h6><b>Guru      : </b><?php echo $TANGGAL_ABSEN?></h6>
+					<h6><b>Semester  : </b><?php echo $ID_SEMESTER?></h6>
+			</div>
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
 					<form action="crud_nilai.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$TANGGAL_ABSEN" ?>" method="post" name="form1">
 					<table class="table table-striped table-hover table-bordered">

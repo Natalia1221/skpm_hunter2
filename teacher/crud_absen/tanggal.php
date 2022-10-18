@@ -63,13 +63,6 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book-open"></i><p >Edit Absensi</p></a>
-				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Edit Absensi</a></li>
-        		</ul>
-			</li>
-
-			<li>
 				<a href="../login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
@@ -84,7 +77,7 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 		
 		<div class="content">
 			<div class="d-flex align-items-center justify-content-center">
-				<a class="btn btn-primary " href="mapel.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>&CRUD=1" role="button"><</a>
+				<a class="btn btn-primary " href="mapel.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>&CRUD=<?php echo$CRUD;?>" role="button"><</a>
 				<h2 class="my-auto">Daftar Absen kelas <?php echo $KELAS['KELAS']?></h2>
 			</div>
 
@@ -92,8 +85,9 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 			<div class="container mx-auto my-3 mx-2" >
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
 					<form action="crud_nilai.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL" ?>" method="post" name="form1">
-					<table class="table table-striped table-hover table-bordered">
-						<div id="tanggal_table">
+					<div id="tanggal_table">
+						<table class="table table-striped table-hover table-bordered">
+						
 							<tr>
 								<th class="col-4">Tanggal</th>
 								<th class="col-2">Keterangan</th>
@@ -102,12 +96,13 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 								while($user_data = mysqli_fetch_array($data_found)) {         
 									echo "<tr>";
 									echo "<td class='col-4'>".$user_data['TANGGAL_ABSEN']."</td>";
-									echo "<td><a class='btn btn-success' href='crud_absen.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$user_data[TANGGAL_ABSEN]&CRUD=$CRUD'>Lihat Absen</a></td></tr>";
+									echo "<td><a class='btn btn-success' href='crud_absen.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$user_data[TANGGAL_ABSEN]&CRUD=$CRUD'>Lihat Absen</a>|<a class='btn btn-danger' href='delete.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$user_data[TANGGAL_ABSEN]&CRUD=$CRUD'>Hapus Absen</a></td></tr>";
 								}
 							?>
-						</div>
+						
 					
-        		    </table>
+        		    	</table>
+					</div>
 
 					<!-- Button trigger modal -->
 					<?php 
@@ -182,7 +177,7 @@ $(document).ready(function(){
     },  
     success:function(data){  
      $('#insert_form')[0].reset();  
-     $('#staticBackdrop').modal('hide');  
+     $('#staticBackdrop').modal('hide');
      $('#tanggal_table').html(data);  
     }  
    });  

@@ -79,13 +79,6 @@ $js_daftar_jlhsiswa =json_encode($daftar_jlhsiswa);
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book-open"></i><p >Edit Absensi</p></a>
-				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Edit Absensi</a></li>
-        		</ul>
-			</li>
-
-			<li>
 				<a href="login_teacher.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>

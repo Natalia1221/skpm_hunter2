@@ -28,11 +28,11 @@ if(!empty($_POST))
      VALUES".$value;
     if(mysqli_query($mysqli, $query))
     {
-     $output .= '<label class="text-success">Data Berhasil Masuk</label>';
      
      $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAMA_SISWA, absen.KETERANGAN, absen.TANGGAL_ABSEN FROM `absen` INNER JOIN siswa ON absen.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && absen.ID_MAPEL ='$ID_MAPEL'&& absen.ID_SEMESTER = '$ID_SEMESTER' GROUP BY absen.TANGGAL_ABSEN");
  
-     $output .= '
+     $output .= '<table class="table table-striped table-hover table-bordered">
+						
         <tr>
             <th class="col-4">Tanggal</th>
             <th class="col-2">Keterangan</th>
@@ -41,14 +41,13 @@ if(!empty($_POST))
      while($row = mysqli_fetch_array($data_found))
      {
       $output .= '
-            <tr>;
-            <td class="col-4">'.$user_data['TANGGAL_ABSEN'].'</td>;'.
-            '<td><a class="btn btn-success" href="crud_absen.php?ID_KELAS='.$ID_KELAS.'&ID_MAPEL='.$ID_MAPEL.'&TANGGAL_ABSEN='.$user_data["TANGGAL_ABSEN"].'>Lihat Absen</a></td>
-            </tr>;
-        
+            <tr>
+            <td class="col-4">'.$row['TANGGAL_ABSEN'].'</td>'.
+            '<td><a class="btn btn-success" href="crud_absen.php?ID_KELAS='.$ID_KELAS.'&ID_MAPEL='.$ID_MAPEL.'&TANGGAL_ABSEN='.$row["TANGGAL_ABSEN"].'>Lihat Absen</a></td>
+            </tr>
       ';
      }
-     
+    $output .= '</table>';
     }else{
 		$output .= mysqli_error($mysqli);
 	}
