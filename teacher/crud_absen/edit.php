@@ -5,21 +5,22 @@ if(isset($_POST['update']))
     session_start();
     $ID_KELAS = $_GET["ID_KELAS"];
     $ID_MAPEL = $_GET["ID_MAPEL"];
-    $JENIS = $_GET["JENIS"];
+	$TANGGAL_ABSEN = $_GET["TANGGAL_ABSEN"];
+
     $ID_SEMESTER = $_SESSION['ID_SEMESTER'];
 	$CRUD = $_GET["CRUD"];
-    $data= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISWA, nilai.NILAI FROM `nilai` INNER JOIN siswa ON nilai.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && nilai.JENIS ='$JENIS' && nilai.ID_MAPEL ='$ID_MAPEL' && nilai.ID_SEMESTER = '$ID_SEMESTER'");
+		
+	$data= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAMA_SISWA, absen.KETERANGAN FROM `absen` INNER JOIN siswa ON absen.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && absen.ID_MAPEL ='$ID_MAPEL'&& absen.ID_SEMESTER = '$ID_SEMESTER'&& absen.TANGGAL_ABSEN = '$TANGGAL_ABSEN'");
 
     $i =0;
     $value = '';
     while($user_data = mysqli_fetch_array($data)) {
-        $ID_NILAI=$_POST["ID_NILAI$i"];
+        $ID_ABSEN=$_POST["ID_ABSEN$i"];
         $NISN = $_POST["NISN$i"];
-        $NILAI =$_POST["NILAI$i"];
-        $value = $value."when `ID_NILAI`='$ID_NILAI' then $NILAI ";
+        $KETERANGAN =$_POST["KETERANGAN$i"];
         
 
-        mysqli_query($mysqli, "UPDATE NILAI SET NILAI=$NILAI WHERE ID_NILAI=$ID_NILAI");
+        mysqli_query($mysqli, "UPDATE absen SET KETERANGAN='$KETERANGAN' WHERE ID_ABSEN=$ID_ABSEN");
         $i =$i+1;
     }
 
@@ -28,7 +29,7 @@ if(isset($_POST['update']))
     //$result = mysqli_query($mysqli, "UPDATE NILAI SET `NILAI`=(CASE $value end)");
     //echo $value;
     // Redirect to homepage to display updated user in list
-    header("Location: crud_nilai.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&JENIS=$JENIS&CRUD=1");
+    header("Location: crud_absen.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&JENIS=$JENIS&TANGGAL_ABSEN=$TANGGAL_ABSEN&CRUD=1");
 }
 ?>
 
@@ -38,12 +39,17 @@ include_once("../../config/config.php");
 session_start();
 $ID_KELAS = $_GET["ID_KELAS"];
 $ID_MAPEL = $_GET["ID_MAPEL"];
-$JENIS = $_GET["JENIS"];
+$TANGGAL_ABSEN = $_GET["TANGGAL_ABSEN"];
 
 $ID_SEMESTER = $_SESSION['ID_SEMESTER'];
 // Fetch all users data from database
 
-$data= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISWA, nilai.NILAI FROM `nilai` INNER JOIN siswa ON nilai.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && nilai.JENIS ='$JENIS'&& nilai.ID_MAPEL ='$ID_MAPEL'&& nilai.ID_SEMESTER = '$ID_SEMESTER'");
+	$kelas = mysqli_query($mysqli, "SELECT * FROM `kelas` WHERE ID_KELAS = '$ID_KELAS'");
+	$KELAS = mysqli_fetch_array($kelas);
+	$mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` WHERE ID_MAPEL = '$ID_MAPEL'");
+	$MAPEL = mysqli_fetch_array($mapel);
+
+	$data= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAMA_SISWA, absen.KETERANGAN FROM `absen` INNER JOIN siswa ON absen.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && absen.ID_MAPEL ='$ID_MAPEL'&& absen.ID_SEMESTER = '$ID_SEMESTER'&& absen.TANGGAL_ABSEN = '$TANGGAL_ABSEN'");
 
 ?>
 
@@ -115,17 +121,25 @@ $data= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISW
 	<section class="home">
 		
 		<div class="content">
-			<h2>Selamat datang guru</h2>
+			<div class="d-flex align-items-center justify-content-center">
+				<a class="btn btn-primary " href="mapel.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>" role="button"><</a>
+				<h2 class="my-auto">Daftar Absen kelas <?php echo $KELAS['KELAS']?></h2>
+			</div>
+
+			<div>
+				<h5 class="my-auto">Mapel   : <?php echo $MAPEL['MAPEL']?></h5>
+				<h5 class="my-auto">Tanggal : <?php echo $TANGGAL_ABSEN?></h5>
+			</div>
 			
 			<div class="container mx-auto my-3 mx-2" >
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
-					<form action="edit.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&JENIS=$JENIS" ?>" method="post" name="form1">
+					<form action="edit.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$TANGGAL_ABSEN&CRUD=1" ?>" method="post" name="form1">
 					<table class="table table-striped table-hover table-bordered">
 
 					<tr>
 	 					<th class="col-4">NISN</th> 
 						<th class="col-4">Nama Siswa</th> 
-						<th class="col-2">Nilai</th>
+						<th class="col-2">Keterangan</th>
  					</tr>
 					 <?php
 					 	$i=0;
@@ -133,10 +147,16 @@ $data= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISW
 							 echo "<tr>";
 							 echo "<td class='col-4'>".$user_data['NISN']."</td>";
                              echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
-                             echo "<td class='col-2'><input class='form-control ' type='number' name='NILAI$i' value=$user_data[NILAI]></td></tr>";
-                         
+                             echo "<td><select class='form-control my-1' name='KETERANGAN$i'>
+										<option"?> <?php if($user_data['KETERANGAN'] == 'HADIR'){echo "selected";}else{echo "";}; ?> <?php echo "value='HADIR'>HADIR</option>
+										<option"?> <?php if($user_data['KETERANGAN'] == 'IZIN'){echo "selected";}else{echo "";}; ?> <?php echo "value='IZIN'>IZIN</option>
+										<option"?> <?php if($user_data['KETERANGAN'] == 'ABSEN'){echo "selected";}else{echo "";};?> <?php echo"value='ABSEN'>ABSEN</option>
+										</select>
+									</td>
+									</tr>";
+									
                         echo "<div class='col-sm-6'><input class='form-control' type='hidden' name='NISN$i' value=$user_data[NISN]></div>";
-                        echo "<div class='col-sm-6'><input class='form-control' type='hidden' name='ID_NILAI$i' value=$user_data[ID_NILAI]></div>";      
+                        echo "<div class='col-sm-6'><input class='form-control' type='hidden' name='ID_ABSEN$i' value=$user_data[ID_ABSEN]></div>";      
                         $i +=1; 
                     }
  					?>

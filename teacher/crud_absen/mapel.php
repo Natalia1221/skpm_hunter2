@@ -107,10 +107,10 @@ $mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` where ID_GURU = '$ID_GURU'
 											echo "<tr>";
 							 				echo "<td class='col-5'>".$id_kelas['KELAS']."</td>";
 											if($CRUD == 1){
-												echo "<td><a class='btn btn-success' href='tanggal.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL'>Masukkan Absen</a></td></tr>";
+												echo "<td><a class='btn btn-success' href='tanggal.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&CRUD=1'>Masukkan Absen</a></td></tr>";
 											}
 											else{
-												echo "<td><a class='btn btn-success' href='absen.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&CRUD=0'>Lihat</a></td></tr>";
+												echo "<td><a class='btn btn-success' href='tanggal.php?ID_KELAS=$id_kelas[ID_KELAS]&ID_MAPEL=$ID_MAPEL&CRUD=0'>Lihat</a></td></tr>";
 											}
 											
 							 	

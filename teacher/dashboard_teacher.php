@@ -98,7 +98,7 @@ $js_daftar_jlhsiswa =json_encode($daftar_jlhsiswa);
 	<!-- Halaman Utama -->
 	<section class="home">
 	<div class="content container-fluid justify-content-center">
-      		<h2 class="mb-5">Selamat datang admin</h2>
+      		<h2 class="mb-5">Selamat datang guru</h2>
 			
 			
 			  <div class="row justify-content-center mb-5">

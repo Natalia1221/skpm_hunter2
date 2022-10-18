@@ -4,14 +4,16 @@ include_once("../../config/config.php");
 session_start();
 $ID_KELAS = $_GET["ID_KELAS"];
 $ID_MAPEL = $_GET["ID_MAPEL"];
-
+$TANGGAL_ABSEN = $_GET["TANGGAL_ABSEN"];
+$CRUD = $_GET["CRUD"];
 $ID_SEMESTER = $_SESSION['ID_SEMESTER'];
 // Fetch all users data from database
 $kelas = mysqli_query($mysqli, "SELECT * FROM `kelas` WHERE ID_KELAS = '$ID_KELAS'");
 $KELAS = mysqli_fetch_array($kelas);
-$siswa = mysqli_query($mysqli, "SELECT NISN, NAMA_SISWA FROM `siswa` WHERE siswa.ID_KELAS = '$ID_KELAS'");
+$mapel = mysqli_query($mysqli, "SELECT * FROM `mapel` WHERE ID_MAPEL = '$ID_MAPEL'");
+$MAPEL = mysqli_fetch_array($mapel);
 
-$data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAMA_SISWA, absen.KETERANGAN FROM `absen` INNER JOIN siswa ON absen.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && absen.ID_MAPEL ='$ID_MAPEL'&& absen.ID_SEMESTER = '$ID_SEMESTER'");
+$data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAMA_SISWA, absen.KETERANGAN FROM `absen` INNER JOIN siswa ON absen.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && absen.ID_MAPEL ='$ID_MAPEL'&& absen.ID_SEMESTER = '$ID_SEMESTER'&& absen.TANGGAL_ABSEN = '$TANGGAL_ABSEN'");
 ?>
 
 <!DOCTYPE html>
@@ -83,13 +85,18 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 		
 		<div class="content">
 			<div class="d-flex align-items-center justify-content-center">
-				<a class="btn btn-primary " href="mapel.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>" role="button"><</a>
+				<a class="btn btn-primary " href="mapel.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>&CRUD=<?php echo$CRUD;?>" role="button"><</a>
 				<h2 class="my-auto">Daftar Absen kelas <?php echo $KELAS['KELAS']?></h2>
+			</div>
+
+			<div>
+				<h5 class="my-auto">Mapel   : <?php echo $MAPEL['MAPEL']?></h5>
+				<h5 class="my-auto">Tanggal : <?php echo $TANGGAL_ABSEN?></h5>
 			</div>
 
 			<div class="container mx-auto my-3 mx-2" >
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
-					<form action="crud_nilai.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL" ?>" method="post" name="form1">
+					<form action="crud_nilai.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$TANGGAL_ABSEN" ?>" method="post" name="form1">
 					<table class="table table-striped table-hover table-bordered">
 
 					<tr>
@@ -98,53 +105,28 @@ $data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAM
 						<th class="col-2">Keterangan</th>
  					</tr>
 					 <?php
-					 	$ada=mysqli_num_rows($data_found);
-						if($ada>0){
-							while($user_data = mysqli_fetch_array($data_found)) {         
-								echo "<tr>";
-								echo "<td class='col-4'>".$user_data['NISN']."</td>";
-								echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
-								echo "<td class='col-4'>".$user_data['KETERANGAN']."</td></tr>";  
-							}
-
-						}else{
-							
-                        	
- 							while($user_data = mysqli_fetch_array($siswa)) {         
-								 echo "<tr>";
-								 echo "<td class='col-4'>".$user_data['NISN']."</td>";
-                        	     echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
-								 echo "<td class='col-2'>0</td></tr>";
-
-							 
-
- 							}
-
-							 $siswa = mysqli_query($mysqli, "SELECT NISN, NAMA_SISWA FROM `siswa` WHERE siswa.ID_KELAS = '$ID_KELAS'");
-
-							 $i =0;
-							 $value = '';
-							 while($user_data = mysqli_fetch_array($siswa)) {
-								 $NISN = $user_data['NISN'];
-								 $NILAI = 0;
-								 $value = $value."('$ID_SEMESTER','$ID_MAPEL', '$NISN', $NILAI, '$JENIS'),";
-								 $i +=1;
-							 }
-					 
-				 
-							 $value = rtrim($value, ",");
-							  // Insert user data into table
-							 $result = mysqli_query($mysqli, "INSERT INTO `nilai` (ID_SEMESTER, ID_MAPEL, NISN, NILAI, JENIS) VALUES $value;");
+					 	while($user_data = mysqli_fetch_array($data_found)) {         
+							echo "<tr>";
+							echo "<td class='col-4'>".$user_data['NISN']."</td>";
+							echo "<td class='col-4'>".$user_data['NAMA_SISWA']."</td>";
+							echo "<td class='col-4'>".$user_data['KETERANGAN']."</td></tr>";  
 						}
 					 	
  					?>
         		    </table>
 
 					<div class="row  col-6 mx-auto">
-						
-	  					<div  class="col-12">
-							<a class='btn btn-primary mt-2 w-100' href='edit.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&JENIS=$JENIS&CRUD=1" ?>'>Edit Nilai</a>
-						</div>
+						<?php 
+							if($CRUD==1){
+								echo "
+								<div  class='col-12'>
+									<a class='btn btn-primary mt-2 w-100' href='edit.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$TANGGAL_ABSEN&CRUD=1'>Edit Absen</a>
+								</div>
+								";
+							}
+						?>
+
+	  					
 					</div>
 
 					</form>
