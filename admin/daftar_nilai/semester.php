@@ -27,7 +27,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_admin.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
@@ -48,28 +48,28 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 			</li>
 
 			<li>
-				<a href="crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
+				<a href="../crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Kelas</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
+				<a href="../daftar_nilai/semester.php"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
+				<a href="../crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Mapel</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_semester/crud_semester.php"><i class="fas fa-award"></i><p>Daftar Semester</p></a>
+				<a href="../crud_semester/crud_semester.php"><i class="fas fa-award"></i><p>Daftar Semester</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Semester</a></li>
         		</ul>
@@ -95,7 +95,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 	<!-- Halaman Utama -->
 	<section class="home">
 		<div class="content">
-			<h2>Daftar Semester</h2>
+			<h2>Daftar Nilai Tiap Semester</h2>
 			
 			<div class="container mx-auto my-3 mx-2" >
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">

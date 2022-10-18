@@ -26,7 +26,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SISWA");
 		<!-- Menu Sidebar -->
 		<ul class="list-menu">
 			<li>
-				<a href="#"><i class="fas fa-home"></i><p>Home</p></a>
+				<a href="../dashboard_admin.php"><i class="fas fa-home"></i><p>Home</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Home</a></li>
         		</ul>
@@ -54,7 +54,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SISWA");
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
+				<a href="../daftar_nilai/semester.php"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
@@ -95,7 +95,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SISWA");
 	<section class="home">
 		
 		<div class="content">
-			<h2>Selamat datang admin</h2>
+			<h2>Daftar Siswa</h2>
 
 			<div class="container mx-auto my-3 mx-2" >
         		<a class="btn btn-secondary btn-lg " href="add.php">Tambah Siswa</a><br/><br/>
