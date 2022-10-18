@@ -45,44 +45,51 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 			</li>
 
 			<li>
-				<a href="crud_siswa/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
+				<a href="../crud_siswa/crud_siswa.php"><i class="fas fa-user-check"></i><p>Daftar Siswa</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Siswa</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_guru/crud_guru.php"><i class="fas fa-user-check"></i><p>Daftar Guru</p></a>
+				<a href="../crud_guru/crud_guru.php"><i class="fas fa-user-check"></i><p>Daftar Guru</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Guru</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
+				<a href="../crud_kelas/crud_kelas.php"><i class="fas fa-school"></i><p>Daftar Kelas</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Kelas</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="../daftar_nilai/semester.php"><i class="fas fa-envelope-open-text"></i><p>Daftar Nilai</p></a>
+				<a href="semester.php"><i class="fas fa-envelope-open-text"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
+				<a href="../crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Mapel</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="crud_semester/crud_semester.php"><i class="fas fa-address-book"></i><p>Daftar Semester</p></a>
+				<a href="../crud_semester/crud_semester.php"><i class="fas fa-address-book"></i><p>Daftar Semester</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Semester</a></li>
+        		</ul>
+			</li>
+
+			<li>
+				<a href="../daftar_absen/semester.php"><i class="fas fa-clipboard"></i><p>Daftar Absen</p></a>
+				<ul class="sub-menu hint">
+          		<li><a class="link_name" href="#">Daftar Absen</a></li>
         		</ul>
 			</li>
 

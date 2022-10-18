@@ -1,9 +1,17 @@
 <?php
 // Create database connection using config file
 include_once("../../config/config.php");
- 
+session_start();
+$ID_KELAS = $_GET["ID_KELAS"];
+$ID_MAPEL = $_GET["ID_MAPEL"];
+
+$ID_SEMESTER = $_SESSION['ID_SEMESTER'];
 // Fetch all users data from database
-$result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
+$kelas = mysqli_query($mysqli, "SELECT * FROM `kelas` WHERE ID_KELAS = '$ID_KELAS'");
+$KELAS = mysqli_fetch_array($kelas);
+$siswa = mysqli_query($mysqli, "SELECT NISN, NAMA_SISWA FROM `siswa` WHERE siswa.ID_KELAS = '$ID_KELAS'");
+
+$data_found= mysqli_query($mysqli, "SELECT absen.ID_ABSEN, absen.NISN, siswa.NAMA_SISWA, absen.KETERANGAN, absen.TANGGAL_ABSEN FROM `absen` INNER JOIN siswa ON absen.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && absen.ID_MAPEL ='$ID_MAPEL'&& absen.ID_SEMESTER = '$ID_SEMESTER' GROUP BY absen.TANGGAL_ABSEN");
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +22,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
 	 <link rel="stylesheet" href="../assets/dashboard_admin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<title>Mapel</title>
+	<script src="../../js/jquery.min.js"></script>  
+	<title>Dashboard Guru</title>
 </head>
 <body>
 	<section class="sidebar close">
 		<!-- Judul Sidebar -->
 		<section class="click-close">
-			<i class="fas fa-bars"></i><p>Admin</p>
+			<i class="fas fa-bars"></i><p>Guru</p>
 		</section>
 
 		<!-- Menu Sidebar -->
@@ -61,7 +70,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
 			</li>
 
 			<li>
-				<a href="crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
+				<a href="../crud_mapel/crud_mapel.php"><i class="fas fa-book"></i><p>Daftar Mapel</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Mapel</a></li>
         		</ul>
@@ -73,9 +82,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
           		<li><a class="link_name" href="#">Daftar Semester</a></li>
         		</ul>
 			</li>
-			
+
 			<li>
-				<a href="../daftar_absen/semester.php"><i class="fas fa-clipboard"></i><p>Daftar Absen</p></a>
+				<a href="semester.php"><i class="fas fa-clipboard"></i><p>Daftar Absen</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Absen</a></li>
         		</ul>
@@ -100,52 +109,56 @@ $result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
 
 	<!-- Halaman Utama -->
 	<section class="home">
+		
 		<div class="content">
-      		<h2>Daftar Mapel</h2>
+			<div class="d-flex align-items-center justify-content-center">
+				<a class="btn btn-primary " href="mapel.php?ID_SEMESTER=<?php echo$ID_SEMESTER;?>" role="button"><</a>
+				<h2 class="my-auto">Daftar Absen kelas <?php echo $KELAS['KELAS']?></h2>
+			</div>
 
-			  	<div class="container mx-auto my-3 mx-2" >
-        			<a class="btn btn-success btn-lg " href="add.php">Tambah Mapel</a><br/><br/>
 
-        			<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
-        			    <table class="table table-striped table-hover table-bordered">
-
+			<div class="container mx-auto my-3 mx-2" >
+        		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
+					<form action="crud_nilai.php?<?php echo "ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL" ?>" method="post" name="form1">
+					<div id="tanggal_table">
+						<table class="table table-striped table-hover table-bordered">
+						
 							<tr>
-	 							<th>Id Mapel</th> 
-								<th>Mapel</th> 
-								<th>Update</th>
- 							</tr>
-
-							<?php  
- 								while($user_data = mysqli_fetch_array($result)) {         
-									 echo "<tr>";
-									 echo "<td>".$user_data['ID_MAPEL']."</td>";
-									 echo "<td>".$user_data['MAPEL']."</td>";   
-									 echo "<td><a class='btn btn-success' href='edit.php?ID_MAPEL=$user_data[ID_MAPEL]'>Edit</a> | <a class='btn btn-danger' href='delete.php?ID_MAPEL=$user_data[ID_MAPEL]'>Delete</a></td></tr>";        
- 								}
- 							?>
-        			    </table>
-        			</div>
+								<th class="col-4">Tanggal</th>
+								<th class="col-2">Keterangan</th>
+							</tr>
+							<?php
+								while($user_data = mysqli_fetch_array($data_found)) {         
+									echo "<tr>";
+									echo "<td class='col-4'>".$user_data['TANGGAL_ABSEN']."</td>";
+									echo "<td><a class='btn btn-success' href='absen.php?ID_KELAS=$ID_KELAS&ID_MAPEL=$ID_MAPEL&TANGGAL_ABSEN=$user_data[TANGGAL_ABSEN]'>Lihat Absen</a></td></tr>";
+								}
+							?>
+						
 					
-    			</div>
+        		    	</table>
+					</div>
+
+					
+
+					</form>
+        		</div>
+					
+    		</div>
+	
     	</div>
 
 	</section>
 
-	<script>
-  	let arrow = document.querySelectorAll(".arrow");
-  	for (var i = 0; i < arrow.length; i++) { 
-  		arrow[i].addEventListener("click", (e)=>{
-  			let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   			arrowParent.classList.toggle("showMenu");
-    		});
-  	}
-  	let sidebar = document.querySelector(".sidebar");
-  	let sidebarBtn = document.querySelector(".fa-bars");
-  	console.log(sidebarBtn);
-  	sidebarBtn.addEventListener("click", ()=>{
-    	sidebar.classList.toggle("close");
-  	});
-  </script>
-		
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
 </body>
 </html>
+
+
+
+
+
+

@@ -55,7 +55,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 			</li>
 
 			<li>
-				<a href="../daftar_nilai/semester.php"><i class="fas fa-envelope-open-text"></i><p>Daftar Nilai</p></a>
+				<a href="semester.php"><i class="fas fa-envelope-open-text"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
@@ -72,6 +72,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM SEMESTER");
 				<a href="../crud_semester/crud_semester.php"><i class="fas fa-address-book"></i><p>Daftar Semester</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Semester</a></li>
+        		</ul>
+			</li>
+
+			<li>
+				<a href="../daftar_absen/semester.php"><i class="fas fa-clipboard"></i><p>Daftar Absen</p></a>
+				<ul class="sub-menu hint">
+          		<li><a class="link_name" href="#">Daftar Absen</a></li>
         		</ul>
 			</li>
 

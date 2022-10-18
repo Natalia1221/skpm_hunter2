@@ -101,6 +101,14 @@ $js_daftar_jlhsiswa =json_encode($daftar_jlhsiswa);
 			</li>
 
 			<li>
+				<a href="daftar_absen/semester.php"><i class="fas fa-clipboard"></i><p>Daftar Absen</p></a>
+				<ul class="sub-menu hint">
+          		<li><a class="link_name" href="#">Daftar Absen</a></li>
+        		</ul>
+			</li>
+
+
+			<li>
 				<a href="crud_belajar/crud_belajar.php"><i class="fas fa-book-reader"></i><p >Daftar Pembelajaran</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Pembelajaran</a></li>
