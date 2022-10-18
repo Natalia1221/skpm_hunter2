@@ -94,14 +94,14 @@ $js_daftar_jlhsiswa =json_encode($daftar_jlhsiswa);
 			</li>
 
 			<li>
-				<a href="crud_semester/crud_semester.php"><i class="fas fa-award"></i><p>Daftar Semester</p></a>
+				<a href="crud_semester/crud_semester.php"><i class="fas fa-address-book"></i><p>Daftar Semester</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Semester</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-book-reader"></i><p >Daftar Pembelajaran</p></a>
+				<a href="crud_belajar/crud_belajar.php"><i class="fas fa-book-reader"></i><p >Daftar Pembelajaran</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Pembelajaran</a></li>
         		</ul>
