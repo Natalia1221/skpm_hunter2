@@ -44,7 +44,9 @@
         $result = mysqli_query($mysqli, "INSERT INTO KELAS(ID_KELAS,KELAS) VALUES('$ID_KELAS','$KELAS')");
         
         // Show message when user added
-        echo "User added successfully. <a href='crud_kelas.php'>View Users</a>";
+        echo "<div class='alert alert-success' role='alert'>
+				Kelas Berhasil Ditambah. <a href='crud_kelas.php'>Kembali</a>
+	  		</div>";
     }
     ?>
 </body>

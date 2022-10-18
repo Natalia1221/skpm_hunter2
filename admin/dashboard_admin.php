@@ -80,7 +80,7 @@ $js_daftar_jlhsiswa =json_encode($daftar_jlhsiswa);
 			</li>
 
 			<li>
-				<a href="daftar_nilai/semester.php"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
+				<a href="daftar_nilai/semester.php"><i class="fas fa-envelope-open-text"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
@@ -101,9 +101,9 @@ $js_daftar_jlhsiswa =json_encode($daftar_jlhsiswa);
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-hand-holding-usd"></i><p >Pembayaran SPP</p></a>
+				<a href="#"><i class="fas fa-book-reader"></i><p >Daftar Pembelajaran</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Pembayaran SPP</a></li>
+          		<li><a class="link_name" href="#">Daftar Pembelajaran</a></li>
         		</ul>
 			</li>
 

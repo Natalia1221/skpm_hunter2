@@ -16,7 +16,11 @@ if(isset($_POST['update']))
     $result = mysqli_query($mysqli, "UPDATE GURU SET USERNAME_GURU='$USERNAME_GURU',PASSWORD_GURU='$PASSWORD_GURU',NAMA_GURU='$NAMA_GURU',JK_GURU='$JK_GURU',HP_GURU='$HP_GURU' WHERE ID_GURU='$ID_GURU'");
     
     // Redirect to homepage to display updated user in list
-    header("Location: crud_guru.php");
+  
+	header("Location: crud_guru.php");
+
+	
+  
 }
 ?>
 <?php

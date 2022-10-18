@@ -57,7 +57,9 @@
         $result = mysqli_query($mysqli, "INSERT INTO SEMESTER(ID_SEMESTER, MASUKKAN_NILAI, MEMBAGI_RAPORT) VALUES('$ID_SEMESTER','$MASUKKAN_NILAI', '$MEMBAGI_RAPORT')");
         
         // Show message when user added
-        echo "User added successfully. <a href='crud_semester.php'>View Users</a>";
+        echo "<div class='alert alert-success' role='alert'>
+				Semester Berhasil Ditambah. <a href='crud_semester.php'>Kembali</a>
+	  		</div>";
     }
     ?>
 

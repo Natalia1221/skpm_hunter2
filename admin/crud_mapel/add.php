@@ -44,7 +44,9 @@
         $result = mysqli_query($mysqli, "INSERT INTO MAPEL(ID_MAPEL,MAPEL) VALUES('$ID_MAPEL','$MAPEL')");
         
         // Show message when user added
-        echo "User added successfully. <a href='crud_mapel.php'>View Users</a>";
+        echo "<div class='alert alert-success' role='alert'>
+				Mapel Berhasil Ditambah. <a href='crud_mapel.php'>Kembali</a>
+	  		</div>";
     }
     ?>
 </body>

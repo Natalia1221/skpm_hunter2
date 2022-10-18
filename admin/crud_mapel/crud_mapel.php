@@ -54,7 +54,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
 			</li>
 
 			<li>
-				<a href="../daftar_nilai/semester.php"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
+				<a href="../daftar_nilai/semester.php"><i class="fas fa-envelope-open-text"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
@@ -75,9 +75,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-hand-holding-usd"></i><p >Pembayaran SPP</p></a>
+				<a href="#"><i class="fas fa-book-reader"></i><p >Daftar Pembelajaran</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Pembayaran SPP</a></li>
+          		<li><a class="link_name" href="#">Daftar Pembelajaran</a></li>
         		</ul>
 			</li>
 
@@ -97,7 +97,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM MAPEL");
       		<h2>Daftar Mapel</h2>
 
 			  	<div class="container mx-auto my-3 mx-2" >
-        			<a class="btn btn-secondary btn-lg " href="add.php">Tambah Mapel</a><br/><br/>
+        			<a class="btn btn-success btn-lg " href="add.php">Tambah Mapel</a><br/><br/>
 
         			<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
         			    <table class="table table-striped table-hover table-bordered">

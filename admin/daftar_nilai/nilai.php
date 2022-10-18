@@ -7,6 +7,12 @@ $ID_MAPEL = $_GET["ID_MAPEL"];
 $ID_GURU = $_GET["ID_GURU"];
 $ID_SEMESTER = $_SESSION['ID_SEMESTER'];
 // Fetch all users data from database
+$mapel= mysqli_query($mysqli, "SELECT * FROM `mapel` WHERE ID_MAPEL = '$ID_MAPEL'");
+$MAPEL=mysqli_fetch_array($mapel);
+
+$guru= mysqli_query($mysqli, "SELECT * FROM `guru` WHERE ID_GURU = '$ID_GURU'");
+$GURU= mysqli_fetch_array($guru);
+
 $kelas = mysqli_query($mysqli, "SELECT * FROM `kelas` WHERE ID_KELAS = '$ID_KELAS'");
 $KELAS = mysqli_fetch_array($kelas);
 $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAMA_SISWA, nilai.NILAI, nilai.JENIS FROM `nilai` INNER JOIN siswa ON nilai.NISN = siswa.NISN WHERE siswa.ID_KELAS = '$ID_KELAS' && nilai.ID_MAPEL ='$ID_MAPEL'&& nilai.ID_SEMESTER = '$ID_SEMESTER'");
@@ -60,7 +66,7 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 			</li>
 
 			<li>
-				<a href="../daftar_nilai/semester.php"><i class="fas fa-book-open"></i><p>Daftar Nilai</p></a>
+				<a href="../daftar_nilai/semester.php"><i class="fas fa-envelope-open-text"></i><p>Daftar Nilai</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">Daftar Nilai</a></li>
         		</ul>
@@ -81,14 +87,14 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 			</li>
 
 			<li>
-				<a href="#"><i class="fas fa-hand-holding-usd"></i><p >Pembayaran SPP</p></a>
+				<a href="#"><i class="fas fa-book-reader"></i><p >Daftar Pembelajaran</p></a>
 				<ul class="sub-menu hint">
-          		<li><a class="link_name" href="#">Pembayaran SPP</a></li>
+          		<li><a class="link_name" href="#">Daftar Pembelajaran</a></li>
         		</ul>
 			</li>
 
 			<li>
-				<a href="login_admin.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
+				<a href="../login_admin.php"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
 				<ul class="sub-menu hint">
           		<li><a class="link_name" href="#">LogOut</a></li>
         		</ul>
@@ -100,11 +106,18 @@ $data_found= mysqli_query($mysqli, "SELECT nilai.ID_NILAI, nilai.NISN, siswa.NAM
 	<!-- Halaman Utama -->
 	<section class="home">
 		<div class="content">
-		<div class="d-flex align-items-center justify-content-center">
+			<div class="d-flex align-items-center justify-content-center">
 				<h2 class="my-auto">Daftar Nilai kelas <?php echo $KELAS['KELAS']?></h2>
 			</div>
 
+			
+
 			<div class="container mx-auto my-3 mx-2" >
+				<div class="text-start ms-2">
+					<h6><b>Mapel     : </b> <?php echo $MAPEL['MAPEL']?></h6>
+					<h6><b>Guru      : </b><?php echo $GURU['NAMA_GURU']?></h6>
+					<h6><b>Semester  : </b><?php echo $ID_SEMESTER?></h6>
+				</div>
         		<div class="table-responsive col-md-12 my-3 mx-2" style="overflow-x: auto">
 					
 					<table class="table table-striped table-hover table-bordered">

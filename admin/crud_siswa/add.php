@@ -70,7 +70,9 @@
         $result = mysqli_query($mysqli, "INSERT INTO SISWA(NISN, USERNAME_SISWA, PASSWORD_SISWA, NAMA_SISWA, JK_SISWA, HP_SISWA) VALUES('$NISN','$USERNAME_SISWA', '$PASSWORD_SISWA', '$NAMA_SISWA', '$JK_SISWA', '$HP_SISWA')");
         
         // Show message when user added
-        echo "User added successfully. <a href='crud_siswa.php'>View Users</a>";
+        echo "<div class='alert alert-success' role='alert'>
+				Akun Siswa Berhasil Ditambah. <a href='crud_siswa.php'>Kembali</a>
+	  		</div>";
     }
     ?>
 

@@ -70,7 +70,10 @@
         $result = mysqli_query($mysqli, "INSERT INTO GURU(ID_GURU, USERNAME_GURU, PASSWORD_GURU, NAMA_GURU, JK_GURU, HP_GURU) VALUES('$ID_GURU','$USERNAME_GURU', '$PASSWORD_GURU', '$NAMA_GURU', '$JK_GURU', '$HP_GURU')");
         
         // Show message when user added
-        echo "User added successfully. <a href='crud_guru.php'>View Users</a>";
+        
+		echo "<div class='alert alert-success' role='alert'>
+				Akun Guru Berhasil Ditambah. <a href='crud_guru.php'>Kembali</a>
+	  		</div>";
     }
     ?>
 
